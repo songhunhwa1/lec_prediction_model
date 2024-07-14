@@ -74,7 +74,9 @@ def calculate_mean_percentiles(df, vegetables):
 
 df = preprocess_data(df)
 
-metric_summary = pd.read_csv("data/metric_summary.csv")
+metric_file_path = 'data/metric_summary.csv'
+
+metric_summary = pd.read_csv(metric_file_path)
 metric_summary.set_index('product', inplace=True)
 
 # Streamlit app layout and interaction code here
