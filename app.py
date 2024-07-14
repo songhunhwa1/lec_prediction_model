@@ -75,7 +75,7 @@ df = preprocess_data(df)
 metric_summary = pd.read_csv("metric_summary.csv")
 metric_summary.set_index('product', inplace=True)  
 
-st.title('농산물 가격 예측 대시보드')
+st.title('🍇농산물 가격 예측 대시보드🥭')
 st.markdown("""
     왼쪽에서 품목과 예측모델, 날짜를 입력하면 특정기간 이후 예측 가격이 표시됩니다.
     """)
