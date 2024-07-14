@@ -1,6 +1,8 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
+import matplotlib.pyplot as plt
+from io import BytesIO
 
 # Path to the CSV file
 csv_file_path = 'streamlit_data.csv'
@@ -44,32 +46,13 @@ def plot_predictions_over_time(df, vegetables, rolling_mean_window):
     ax.grid(True, color='lightgrey', linestyle='--')
     fig.tight_layout()
 
-    # Display the plot in Streamlit using st.pyplot
-    st.pyplot(fig)
+    # Save the Matplotlib plot to a BytesIO object
+    image_stream = BytesIO()
+    fig.savefig(image_stream, format='png')
+    plt.close(fig)  # Close the Matplotlib figure to free up memory
 
-def calculate_mean_percentiles(df, vegetables):
-    percentiles = [25, 50, 75]
-    percentile_data = {}
-
-    for veg in vegetables:
-        veg_prices = df[veg].dropna().values  # Drop NaN values for calculation
-        if len(veg_prices) > 0:
-            veg_percentiles = np.percentile(veg_prices, percentiles)
-            percentile_data[veg] = {
-                '25th Percentile': veg_percentiles[0],
-                'Median': veg_percentiles[1],
-                '75th Percentile': veg_percentiles[2],
-                'Mean': np.mean(veg_prices)
-            }
-        else:
-            percentile_data[veg] = {
-                '25th Percentile': np.nan,
-                'Median': np.nan,
-                '75th Percentile': np.nan,
-                'Mean': np.nan
-            }
-
-    return pd.DataFrame(percentile_data).T
+    # Display the plot as an image in Streamlit
+    st.image(image_stream, caption='Overlapped Charts', use_column_width=True)
 
 df = preprocess_data(df)
 
