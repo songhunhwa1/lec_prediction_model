@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
-import matplotlib.pyplot as plt
+#import matplotlib.pyplot as plt
 
 # Path to the CSV file
 csv_file_path = 'streamlit_data.csv'
@@ -26,7 +26,7 @@ def preprocess_data(df):
     return df
 
 def plot_predictions_over_time(df, vegetables, rolling_mean_window):
-    fig, ax = plt.subplots(figsize=(14, 7))
+    #fig, ax = plt.subplots(figsize=(14, 7))
 
     colors = ['b', 'g', 'r', 'c', 'm', 'y', 'k']
     num_colors = len(colors)
