@@ -63,6 +63,18 @@ sorted_vegetables = sorted(df.columns)
 vegetables = st.sidebar.multiselect('조회 품목:', sorted_vegetables)
 rolling_mean_window = st.sidebar.slider('Rolling Mean Window', min_value=1, max_value=30, value=7)
 
+st.sidebar.markdown("""
+| Korean | English    |
+|--------|------------|
+| 배추   | cabbage    |
+| 무     | radish     |
+| 마늘   | garlic     |
+| 양파   | onion      |
+| 대파   | daikon     |
+| 건고추 | cilantro   |
+| 깻잎   | artichoke  |
+""")
+
 filtered_df = df.loc[start_date:end_date]
 
 if vegetables:
