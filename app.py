@@ -26,7 +26,7 @@ def preprocess_data(df):
     return df
 
 def plot_predictions_over_time(df, vegetables, rolling_mean_window):
-    #fig, ax = plt.subplots(figsize=(14, 7))
+    fig, ax = plt.subplots(figsize=(14, 7))
 
     colors = ['b', 'g', 'r', 'c', 'm', 'y', 'k']
     num_colors = len(colors)
