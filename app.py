@@ -4,7 +4,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # Path to the CSV file
-csv_file_path = 'streamlit_data.csv'
+csv_file_path = 'data/streamlit_data.csv'
 
 @st.cache_data
 def load_data(file_path):
@@ -74,7 +74,7 @@ def calculate_mean_percentiles(df, vegetables):
 
 df = preprocess_data(df)
 
-metric_summary = pd.read_csv("metric_summary.csv")
+metric_summary = pd.read_csv("data/metric_summary.csv")
 metric_summary.set_index('product', inplace=True)
 
 # Streamlit app layout and interaction code here
